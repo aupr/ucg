@@ -1,0 +1,52 @@
+.mat-input-width {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.tileHeader{
+  background-color: aquamarine;
+
+  button{
+    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+}
+
+.addSeparatorBtn{
+  border-radius: 0;
+  background-color: darkslateblue;
+  color: white;
+}
+
+.previewTextArea{
+  width: 450px;
+  height: 525px;
+  resize: none;
+  overflow-y: scroll;
+  position: absolute;
+  top: 58px;
+  left: 10px;
+}
+
+.previewTextInfoMainBox{
+  position: absolute;
+  top: 58px;
+  right: 10px;
+  width: 198px;
+  height: 531px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  .infoBox{
+    margin: 10px 0;
+  }
+  button{
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0;
+  }
+}
+
+

@@ -1,0 +1,100 @@
+<div *ngIf="false">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<mat-grid-list cols="3" rowHeight="650px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#ff0d24'">
+    <div style="padding: 8px; background-color: antiquewhite; height: 100%; width: available; box-sizing: border-box; overflow-x: hidden; overflow-y: scroll;">
+      <h4 style="margin: 10px; display: none;">Schema</h4>
+
+      <mat-form-field class="mat-input-width" color="primary">
+        <mat-select placeholder="Code Type" [(value)]="codeData.codeType">
+          <mat-option value="numeric">NUMERIC [123456]</mat-option>
+          <mat-option value="alphabetic">ALPHABETIC [AaBbCc]</mat-option>
+          <mat-option value="alphanumeric">ALPHANUMERIC [1Aa2Bb]</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width" color="primary">
+        <mat-select placeholder="Case Type" [disabled]="codeData.codeType == 'numeric'" [(value)]="codeData.caseType">
+          <mat-option value="upper">UPPER CASE</mat-option>
+          <mat-option value="lower">LOWER CASE</mat-option>
+          <mat-option value="both">BOTH (UPPER-LOWER) CASE</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width" color="primary">
+        <input matInput placeholder="Include Characters" [(ngModel)]="codeData.includeChars">
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width" color="primary">
+        <input matInput placeholder="Exclude Characters" [(ngModel)]="codeData.excludeChars">
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width" color="primary">
+        <input matInput type="number" placeholder="Actual Code Length" [(ngModel)]="codeData.codeLength">
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width">
+        <input matInput type="text" placeholder="Code Prefix" [(ngModel)]="codeData.codePrefix">
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width">
+        <input matInput type="text" placeholder="Code Suffix" [(ngModel)]="codeData.codeSuffix">
+      </mat-form-field>
+
+      <div *ngFor="let sptr of codeData.separator">
+        <mat-form-field style="width: 100px">
+          <input matInput type="number" placeholder="Position" [(ngModel)]="sptr.position">
+        </mat-form-field>
+        <mat-form-field style="width: 100px;">
+          <input matInput type="text" placeholder="Separator" [(ngModel)]="sptr.symbol">
+        </mat-form-field>
+        <button mat-icon-button (click)="deleteSeparator(sptr)">
+          <mat-icon aria-label="Delete" color="accent" >remove_circle_outline</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="warn" class="addSeparatorBtn" (click)="addSeparator()"><mat-icon color="accent">add_circle_outline</mat-icon> ADD NEW SEPARATOR FIELD</button>
+
+      <mat-form-field class="mat-input-width">
+        <textarea matInput placeholder="File Header Text" rows="3" [(ngModel)]="codeData.headerText"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="mat-input-width">
+        <textarea matInput placeholder="File Footer Text" rows="3" [(ngModel)]="codeData.footerText"></textarea>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'#97beff'">
+    <mat-grid-tile-header class="tileHeader">
+      <button mat-raised-button (click)="openPreviewDialog()">PREVIEW <mat-icon>done</mat-icon></button>
+      <button mat-raised-button (click)="openGenerateDialog()">GENERATE <mat-icon>done_all</mat-icon></button>
+      <button mat-raised-button style="position: absolute; right: 0; background-color: #ffb877;">FEEDBACK <mat-icon>favorite_border</mat-icon></button>
+    </mat-grid-tile-header>
+    <div style="background-color: #ffc3db; width: 100%; height: 550px;">
+      <div style="width: inherit; height: inherit; background-color: #ff7c38;">
+        <textarea class="previewTextArea" [(ngModel)]="previewCode" #previewText></textarea>
+        <div class="previewTextInfoMainBox">
+          <div class="infoBox">Char: {{previewCode.length}}</div>
+          <mat-divider></mat-divider>
+          <div class="infoBox">Size: {{previewCode.length/1000}} kB</div>
+          <mat-divider></mat-divider>
+          <div class="infoBox">word: {{wordCount(previewCode)}}</div>
+          <mat-divider></mat-divider>
+          <div class="infoBox">Line: {{lineCount(previewCode)}}</div>
+          <mat-divider></mat-divider>
+          <div class="infoBox">CR [\r][0x0D]: {{crCount(previewCode)}}</div>
+          <mat-divider></mat-divider>
+          <div class="infoBox">LF [\n][0x0A]: {{lfCount(previewCode)}}</div>
+          <mat-divider></mat-divider>
+          <button mat-raised-button style="height: 150px; background-color: rgba(0,255,0,0.28);" (click)="copyPreviewText(previewText)">COPY</button>
+          <button mat-raised-button style="height: 70px; background-color: rgba(255,0,0,0.29);" (click)="erasePreviewText()">ERASE</button>
+        </div>
+
+      </div>
+    </div>
+    <mat-grid-tile-footer>
+      <span *ngIf="finalCodeLength > 0">Final Code Length: {{finalCodeLength}}&nbsp;&nbsp; |&nbsp;&nbsp; Execution Time: {{execTime}} ms</span> <span *ngIf="finalCodeLength == 0">Machine performance 99%</span>
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,16 @@
+
+<h1 mat-dialog-title>Unique Code Preview</h1>
+
+<div mat-dialog-content>
+  <p>how many code your want to get in preview?</p>
+  <mat-form-field>
+    <input matInput  type="number" [(ngModel)]="data.numberOfCodePreview">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="data">Generate</button>
+</div>
+
+

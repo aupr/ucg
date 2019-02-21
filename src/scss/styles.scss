@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.previewModal{
+  mat-dialog-container{
+    background-color: white;
+    border-radius: 0;
+    .mat-dialog-actions{
+      background-color: transparent;
+      button{
+        border-radius: 0;
+        width: 120px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.generateModal{
+  mat-dialog-container{
+    background-color: white;
+    border-radius: 0;
+    .inputBlock{
+      width: 100%;
+      background-color: white;
+    }
+    .mat-dialog-actions{
+      background-color: transparent;
+      .cancel, .okay{
+        border-radius: 0;
+        width: 120px;
+      }
+      .cancel{
+        margin-left: 300px;
+      }
+      .okay{
+        margin-left: 20px;
+      }
+    }
+  }
+}

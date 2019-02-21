@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+
+
+<mat-sidenav-container style="width: 1024px; margin: auto; background-color: #eeeeee">
+  <mat-sidenav #sidenav mode="over" style="background-color: rgb(174,170,255);">
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+    <div style="background-color: darkred; width: 200px; height: 50px;"></div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="width: 100%;">
+      <mat-toolbar style="background-color: darkred; color: white;">
+        <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+        Unique Code Generator [PRO] [FREE]
+      </mat-toolbar>
+      <div class="row" style="margin: 10px;">
+        <span style="font-weight: 500;">Welcome Guest User</span>
+        <button color="warn" style="margin: 3px;" mat-raised-button>Sign In</button>
+        <button color="warn" style="margin: 3px;" mat-raised-button>Sign Up</button>
+      </div>
+      <mat-divider style="margin-bottom: 10px;"></mat-divider>
+
+      <router-outlet></router-outlet>
+
+
+      <div style="width: available; height: 40px; background-color: darkred; color: white; vertical-align: center; line-height: 40px; padding-left: 20px;">
+        Powered by WIEXON
+      </div>
+
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

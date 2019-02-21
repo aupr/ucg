@@ -1,0 +1,54 @@
+
+<h1 mat-dialog-title>Unique Code Output Schema</h1>
+
+<div mat-dialog-content>
+  <mat-grid-list cols="3" rowHeight="130px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#eeeeee'">
+
+      <div class="inputBlock">
+        <mat-form-field>
+          <input matInput  type="number" placeholder="Number Of Code" [(ngModel)]="data.numberOfCodeGenerate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput  type="number" placeholder="Number Of File" [(ngModel)]="data.numberOfFile">
+        </mat-form-field>
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#eeeeee'">
+
+      <div class="inputBlock">
+        <mat-form-field>
+          <input matInput  type="text" placeholder="File Name" [(ngModel)]="data.fileName">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput  type="text" placeholder="File Extension" [(ngModel)]="data.fileExtension">
+        </mat-form-field>
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#eeeeee'">
+
+      <div class="inputBlock">
+        <mat-form-field>
+          <input matInput  type="number" placeholder="File Number Start" [(ngModel)]="data.fileNumberStart">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="File Number With" [(value)]="data.fileNumberWith">
+            <mat-option value="option1">File Name</mat-option>
+            <mat-option value="option2">File Extension</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button class="cancel" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button class="okay" [mat-dialog-close]="data">Generate</button>
+</div>
