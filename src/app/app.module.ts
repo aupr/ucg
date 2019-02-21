@@ -18,6 +18,7 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { GenerateDialogComponent } from './generate-dialog/generate-dialog.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     MainComponent,
     PreviewDialogComponent,
-    GenerateDialogComponent
+    GenerateDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

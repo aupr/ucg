@@ -1,0 +1,23 @@
+<div style="width: 400px; margin: 100px auto 150px auto; box-sizing: border-box; background-color: white; border: 1px solid #999999;">
+  <div style="background-color: #ffb0b2; box-sizing: border-box; height: 40px; line-height: 40px; vertical-align: center; padding-left: 10px; font-weight: 500;">Sign in</div>
+  <div style="margin: 20px auto 20px auto; width: 350px;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="Enter your E-mail">
+      <mat-icon matSuffix>alternate_email</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint></mat-hint>
+    </mat-form-field>
+
+    <button mat-button style="border-radius: 0;">Create account</button>
+    <button mat-raised-button color="primary" style="float: right; border-radius: 0;">Sign in</button>
+
+  </div>
+  <mat-divider></mat-divider>
+</div>
